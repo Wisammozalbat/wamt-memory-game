@@ -41,6 +41,12 @@ const Memory = props => {
         }
     }, [mode])
 
+    useEffect(() => {
+        if (pairsMatched === pairsToWin && pairsToWin !== 0){
+            setGameOver(true)
+        }
+    }, [pairsMatched, pairsToWin])
+
     const changeMode = newMode => {
         let size = 0;
         switch (newMode) {
@@ -122,12 +128,6 @@ const Memory = props => {
             setMatchCheck([{}, {}, 0])
         }
     }
-
-    useEffect(() => {
-        if (pairsMatched === pairsToWin && pairsToWin !== 0){
-            setGameOver(true)
-        }
-    }, [pairsMatched, pairsToWin])
     
     if (matchCheck[2] > 1) {
         checkIfMatch();
@@ -172,19 +172,20 @@ const Memory = props => {
         setTimeout(() => {
             shuffle();
         }, 1000)
-        switch(mode) {
-            case "Easy":
-                setPairsToWin(2)
-                break;
-            case "Medium":
-                setPairsToWin(4)
-                break;
-            case "Hard":
-                setPairsToWin(12)
-                break;
-            default:
-                break;
-        }
+        setPairsToWin(cards.length / 2)
+        // switch(mode) {
+        //     case "Easy":
+        //         setPairsToWin(2)
+        //         break;
+        //     case "Medium":
+        //         setPairsToWin(6)
+        //         break;
+        //     case "Hard":
+        //         setPairsToWin(12)
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 
     const restart = () => {
