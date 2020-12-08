@@ -267,7 +267,7 @@ const Memory = props => {
                 {isShuffling ? <div className={classes.Cover}>Shuffling Cards</div> : null}
                 {gameOver ? <div className={classes.GameOver}>You won!</div> : null}
             </div>
-            <div className={classes.IconTribute}>Card images made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
+            <div className={classes.IconTribute}>Page made by Wisam Mozalbat. Card images made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
         </div>
     )
 }
