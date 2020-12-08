@@ -1,0 +1,379 @@
+.Body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.Header {
+  position: relative;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(
+    to right,
+    var(--header-bg-dark),
+    var(--header-bg-light)
+  );
+  /* background-color: #9c9c9c; */
+}
+
+.ModesContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  height: 10vh;
+  width: 70%;
+}
+
+.Check,
+.Icon {
+  font-weight: bold;
+  color: var(--button-bg-accept);
+  border: 1px solid var(--button-bg-accept);
+}
+
+.Check,
+.Icon,
+.Disabled {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 10px;
+}
+
+.ButtonContainer {
+  position: relative;
+  width: 7vh;
+  height: 7vh;
+}
+
+.Disabled {
+  border: 1px solid grey;
+  background-color: var(--button-bg-disabled);
+  animation: spinIn 1s linear 0s forwards;
+}
+
+.CheckContainer,
+.Restart {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  padding-right: 15px;
+}
+
+.CheckHide {
+  display: none;
+}
+
+.CheckVisible,
+.Icon {
+  animation: spinIn 1s linear 0s forwards;
+}
+
+.PickText {
+  background-color: var(--header-bg-light);
+  text-transform: uppercase;
+  color: var(--text);
+  font-weight: 700;
+  letter-spacing: 2px;
+  height: 8vh;
+  width: 200px;
+  border-radius: 10px;
+  margin-left: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 1s ease-in-out;
+  cursor: pointer;
+}
+
+.PickTextNotVisible {
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.PickContent {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: calc(100% - 5px);
+  height: 100%;
+  transform: translateX(-150%);
+  transition: all 1s ease-in-out;
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  opacity: 0;
+  user-select: none;
+}
+
+.PickVisible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.PickHide {
+  transform: translateX(-150%);
+  opacity: 0;
+}
+
+.ModeContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  font-size: 20px;
+}
+
+.LeftToRight {
+  left: -2000px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--text-dark);
+}
+
+.RightToLeft {
+  left: 2000px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: var(--text);
+}
+
+.LeftToRight,
+.RightToLeft {
+  position: relative;
+  animation: dashIn 1s cubic-bezier(0.2, 0.76, 0.58, 1.12) 0s forwards;
+  opacity: 0;
+}
+
+.CardsContainer {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 200px;
+  min-height: 300px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  /* overflow-x: hidden; */
+}
+.IconTribute {
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  padding: 40px;
+}
+
+.CardsContent {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: grid;
+  box-sizing: border-box;
+  grid-gap: 20px;
+}
+
+.CardsContent.Easy {
+  grid-template-columns: repeat(2, 280px);
+  grid-auto-rows: 230px;
+}
+
+.CardsContent.Medium {
+  grid-template-columns: repeat(4, 230px);
+  grid-auto-rows: 180px;
+}
+
+.CardsContent.Hard {
+  grid-template-columns: repeat(6, 200px);
+  grid-auto-rows: 150px;
+}
+
+.Cover,
+.GameOver {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  opacity: 0.4;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.DefaultMsg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+@media (max-width: 1320px) {
+  .CardsContent.Hard {
+    grid-template-columns: repeat(5, 200px);
+  }
+}
+
+@media (max-width: 1150px) {
+  .CardsContent.Hard {
+    grid-template-columns: repeat(4, 200px);
+  }
+
+  .CardsContent.Medium {
+    grid-template-columns: repeat(4, 200px);
+    grid-auto-rows: 150px;
+  }
+}
+
+@media (max-width: 870px) {
+  .CardsContent.Hard {
+    grid-template-columns: repeat(3, 200px);
+  }
+
+  .CardsContent.Medium {
+    grid-template-columns: repeat(3, 200px);
+  }
+
+  .CardsContent.Easy {
+    grid-template-columns: repeat(2, 230px);
+    grid-auto-rows: 180px;
+  }
+}
+
+@media (max-width: 650px) {
+  .CardsContent.Hard {
+    grid-template-columns: repeat(2, 200px);
+  }
+
+  .CardsContent.Medium {
+    grid-template-columns: repeat(2, 200px);
+  }
+}
+
+@media (max-width: 500px) {
+  .CardsContent.Easy {
+    grid-template-columns: repeat(2, 200px);
+    grid-auto-rows: 150px;
+  }
+}
+
+@media (max-width: 450px) {
+  .Header {
+    height: 20vh;
+    flex-direction: column;
+  }
+
+  .PickText {
+    width: 100%;
+    margin-top: 5.5vh;
+    margin-left: 0;
+  }
+
+  .CheckContainer,
+  .Restart {
+    padding: 0;
+  }
+
+  .ModeContainer {
+    top: 30%;
+    left: 50%;
+    width: 200px;
+    height: auto;
+  }
+
+  .PickContent {
+    align-items: baseline;
+    padding-top: 20px;
+  }
+
+  .PickVisible {
+    width: auto;
+    height: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .CardsContent.Hard {
+    grid-template-columns: repeat(2, 150px);
+    grid-auto-rows: 100px;
+  }
+
+  .CardsContent.Medium {
+    grid-template-columns: repeat(2, 150px);
+    grid-auto-rows: 100px;
+  }
+
+  .CardsContent.Easy {
+    grid-template-columns: repeat(2, 150px);
+    grid-auto-rows: 100px;
+  }
+}
+
+@media (max-width: 320px) {
+  .CardsContent.Hard {
+    grid-template-columns: repeat(2, 120px);
+    grid-auto-rows: 120px;
+  }
+
+  .CardsContent.Medium {
+    grid-template-columns: repeat(2, 120px);
+    grid-auto-rows: 120px;
+  }
+
+  .CardsContent.Easy {
+    grid-template-columns: repeat(2, 120px);
+    grid-auto-rows: 120px;
+  }
+}
+
+@keyframes spinIn {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(720deg);
+    width: 5vh;
+    height: 5vh;
+    padding: 1vh;
+    top: 0;
+    left: 0;
+  }
+}
+
+@keyframes dashIn {
+  20% {
+    opacity: 0;
+  }
+  100% {
+    left: 0;
+    opacity: 1;
+  }
+}

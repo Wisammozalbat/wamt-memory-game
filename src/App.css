@@ -1,0 +1,22 @@
+:root {
+  --body-bg: #cccccc;
+  --header-bg-dark: rgb(87, 87, 87);
+  --header-bg-light: #9c9c9c;
+  --button-bg-accept: #fafffa;
+  --button-bg-disabled: #6666668f;
+  --card-bg-light: #5e5e5e;
+  --card-bg-dark: #4f4f4f;
+  --text: #f0f0f0;
+  --text-dark: #d9d9d9;
+}
+
+.App {
+  overflow-x: hidden;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: var(--body-bg);
+}
