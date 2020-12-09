@@ -19,18 +19,43 @@
   );
 }
 
-.TitleHide {
+.Title div {
+  opacity: 0;
+  transform: translate(-20%, -40%) rotate(-25deg);
+  animation: showTitle 1s ease calc(var(--i) * 0.1s) forwards;
+  /* transition: all 0.2s ease calc(var(--i) * 0.1s); */
+}
+
+.TitleHide div {
+  transform: translate(0, 0) rotate(0deg);
+  animation: hideTitle 0.7s ease calc(var(--i) * 0.1s) forwards;
+  /* opacity: 0;
+  transform: translateY(-20%) rotate(-15deg); */
+}
+
+/* .TitleHide {
   height: 100%;
   animation: hideTitle 0.5s ease-in-out 0s forwards;
-}
+} */
 
 @keyframes hideTitle {
   0% {
     opacity: 1;
   }
   100% {
-    /* transform: translateY(-20%); */
+    transform: translate(20%, -40%) rotate(25deg);
     opacity: 0;
+  }
+}
+
+@keyframes showTitle {
+  0% {
+    opacity: 0;
+    transform: translate(-20%, -40%) rotate(-25deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0) rotate(0deg);
   }
 }
 

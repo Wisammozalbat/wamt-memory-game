@@ -1,3 +1,9 @@
+# Memory Game
+
+This memory game is create by me, Wisam Mozalbat using React and CSS, there are a lot of cool animations.
+
+Go check it out [here](https://ecstatic-boyd-b2674a.netlify.app)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

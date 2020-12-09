@@ -207,7 +207,17 @@ const Memory = props => {
                 }
                 <div style={{display: modeAccepted && !isShuffling ? 'none': 'block'}} className={[classes.TitleContainer].join(' ')}>
                     <div className={[classes.Title, modeAccepted ? classes.TitleHide : ''].join(' ')}>
-                        Memory game
+                        <div style={{'--i': 0}}>M</div>
+                        <div style={{'--i': 1}}>e</div>
+                        <div style={{'--i': 2}}>m</div>
+                        <div style={{'--i': 3}}>o</div>
+                        <div style={{'--i': 4}}>r</div>
+                        <div style={{'--i': 5}}>y</div>
+                        <div style={{'--i': 6}}>{'\u00A0'}</div>
+                        <div style={{'--i': 7}}>G</div>
+                        <div style={{'--i': 8}}>a</div>
+                        <div style={{'--i': 9}}>m</div>
+                        <div style={{'--i': 10}}>e</div>
                     </div>
                 </div>
                 {modeAccepted ?
