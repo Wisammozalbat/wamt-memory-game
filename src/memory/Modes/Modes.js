@@ -19,7 +19,7 @@ export const Modes = props => {
 
     useEffect(() => {
         if (modeSetted) {
-            let newStyleClasses = {...styleClasses}
+            let newStyleClasses = {...defaultStyleClasses}
             for (let dif in newStyleClasses) {
                 if (dif === props.mode.toLowerCase()) {
                     newStyleClasses[dif] = [...newStyleClasses[props.mode.toLowerCase()], classes.ModeItemSelected]
