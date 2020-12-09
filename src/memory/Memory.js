@@ -205,7 +205,11 @@ const Memory = props => {
                     </div>
                     : null
                 }
-                <div className={[classes.TitleContainer].join(' ')}><div className={[classes.Title, modeAccepted ? classes.TitleHide : ''].join(' ')}>Memory game</div></div>
+                <div style={{display: modeAccepted && !isShuffling ? 'none': 'block'}} className={[classes.TitleContainer].join(' ')}>
+                    <div className={[classes.Title, modeAccepted ? classes.TitleHide : ''].join(' ')}>
+                        Memory game
+                    </div>
+                </div>
                 {modeAccepted ?
                     <React.Fragment>
                         <div className={classes.ModeContainer}>

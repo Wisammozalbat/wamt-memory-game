@@ -17,7 +17,6 @@
     var(--header-bg-dark),
     var(--header-bg-light)
   );
-  user-select: none;
 }
 
 .TitleHide {
@@ -41,7 +40,7 @@
   left: 50%;
   transform: translateX(-50%);
   height: 100%;
-  width: 100%;
+  width: 50%;
 }
 
 .Title {
@@ -355,10 +354,9 @@
   }
 
   .TitleContainer {
-    align-items: flex-start;
-    justify-content: center;
     padding-top: 1vh;
     height: 100%;
+    width: 100%;
   }
 
   .Title {
