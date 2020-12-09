@@ -5,10 +5,6 @@ import { defaultCards } from "../components/AllCards/AllCards"
 import classes from './Memory.module.css'
 import { Modes } from './Modes/Modes';
 
-import { VscDebugRestart } from 'react-icons/vsc';
-import { BsCheck } from 'react-icons/bs'
-
-
 const Memory = props => {
     const [mode, setMode] = useState('');
     const [modeAccepted, setModeAccepted] = useState(false)
@@ -24,7 +20,6 @@ const Memory = props => {
     ])
     const [pairsMatched, setPairsMatched] = useState(0)
     const [pairsToWin, setPairsToWin] = useState(0)
-    const [pickVisible, setPickVisible] = useState(false)
     const [gameOver, setGameOver] = useState(false)
     
     useEffect(() => {
@@ -51,7 +46,7 @@ const Memory = props => {
         let size = 0;
         switch (newMode) {
             case "Easy":
-                size = 4;
+                size = 6;
                 break;
             case "Medium":
                 size = 12;
@@ -202,53 +197,19 @@ const Memory = props => {
     return (
         <div className={classes.Body}>
             <div className={classes.Header}>
-                <div className={classes.ModesContainer}>
-                    <div className={[classes.PickText, pickVisible ? classes.PickTextNotVisible : ""].join(' ')} onClick={() => setPickVisible(true)}>pick difficulty</div>
-                    <div className={[classes.PickContent, pickVisible ? classes.PickVisible : "", modeAccepted ? classes.PickHide : ''].join(' ')}>
-                        <Modes {...{startGame, mode, changeMode}}/>
-                    </div>
-                </div>
-                {pickVisible ? 
+                {modeAccepted && !isShuffling ? 
                     <div 
-                        className={[
-                            classes.CheckContainer,
-                            pickVisible ? classes.CheckContainerVisible : "",
-                            modeAccepted ? classes.CheckHide : "",
-                            mode !== "" ? '' : classes.Disable
-                        ].join(" ")} 
+                        className={classes.RestartContainer}
                     >
-                            <div className={classes.ButtonContainer}>
-                                <BsCheck 
-                                    onClick={startGame}
-                                    className={[
-                                        classes.Check, 
-                                        pickVisible ? classes.CheckVisible : ""
-                                    ].join(" ")}
-                                />
-                                <div className={mode !== "" ? classes.CheckAbled : classes.Disabled}></div>
-                            </div>
+                        <div onClick={restart} className={[classes.Button].join(" ")}>Restart</div>
                     </div>
                     : null
                 }
+                <div className={[classes.TitleContainer].join(' ')}><div className={[classes.Title, modeAccepted ? classes.TitleHide : ''].join(' ')}>Memory game</div></div>
                 {modeAccepted ?
                     <React.Fragment>
                         <div className={classes.ModeContainer}>
                             <span className={classes.LeftToRight}>Difficulty</span><span className={classes.RightToLeft}>{mode.toUpperCase()}</span>
-                        </div>
-                        <div 
-                            className={[
-                                classes.Restart, 
-                                isShuffling ? classes.Disable : ''
-                            ].join(" ")} 
-                        >
-                            <div className={classes.ButtonContainer}>
-                                <VscDebugRestart
-                                    onClick={restart}
-                                    className={[
-                                        classes.Icon
-                                    ].join(" ")}/>
-                                <div className={!isShuffling ? classes.RestartAbled : classes.Disabled}></div>
-                            </div>
                         </div>
                     </React.Fragment>
                 : null }
@@ -264,11 +225,34 @@ const Memory = props => {
                             currentContainer={domNode.getBoundingClientRect()}
                         />
                     </div> 
-                    : <div className={classes.DefaultMsg}>Please select a difficulty</div>}
+                    : null}
+                <div 
+                    style={{paddingTop: cards.length > 0 ? "122px" : 0,
+                            display: !isShuffling && modeAccepted ? "none" : "block",
+                            backgroundColor: cards.length > 0 && mode !== "" ? 'rgba(151, 151, 151, 0.4)' : "transparent"
+                        }}
+                    className={classes.SelectMode}>
+                        <div
+                            className={[classes.PickContent, modeAccepted ? classes.PickHide : ''].join(' ')}
+                        >
+                            <Modes {...{startGame, mode, changeMode}}/>
+                            {/* This is the start button */}
+                            <div 
+                                onClick={mode !== '' ? startGame : null} 
+                                className={[classes.ButtonContainer, classes.Button].join(' ')}>
+                                    Play
+                            </div>
+                        </div>
+                    </div>         
                 {isShuffling ? <div className={classes.Cover}>Shuffling Cards</div> : null}
-                {gameOver ? <div className={classes.GameOver}>You won!</div> : null}
+                {gameOver ? 
+                    <div className={classes.GameOver}>
+                        <div className={classes.RestartGame} onClick={restart}>Restart</div>
+                        <div>You won!</div>
+                    </div> 
+                : null}
             </div>
-            <div className={classes.IconTribute}>Page made by Wisam Mozalbat. Card images made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
+            <div className={classes.IconTribute}><span style={{display: "block", fontSize: "25px"}}>Page made by Wisam Mozalbat.</span> Card images made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a></div>
         </div>
     )
 }

@@ -20,7 +20,7 @@ export const CardImage = (props) => {
         case "butterfly":
             image = <img src={Butterfly} style={props.style} alt="Butterfly" />
             break;
-        case "football ball":
+        case "ball":
             image = <img src={FootballBall} style={props.style} alt="Football Ball"/>
             break;
         case "rocket":

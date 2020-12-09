@@ -17,7 +17,79 @@
     var(--header-bg-dark),
     var(--header-bg-light)
   );
-  /* background-color: #9c9c9c; */
+  user-select: none;
+}
+
+.TitleHide {
+  height: 100%;
+  animation: hideTitle 0.5s ease-in-out 0s forwards;
+}
+
+@keyframes hideTitle {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    /* transform: translateY(-20%); */
+    opacity: 0;
+  }
+}
+
+.TitleContainer {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: auto;
+}
+
+.Title {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--text);
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.RestartContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 100%;
+  height: 8vh;
+  padding-right: 15px;
+}
+
+.Button,
+.RestartGame {
+  padding: 10px 20px;
+  background-color: var(--card-bg-light);
+  color: var(--text);
+  border-radius: 10px;
+  text-transform: uppercase;
+  user-select: none;
+  cursor: pointer;
+  box-shadow: 0 0 5px 0 grey;
+}
+
+.Button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px 0 grey;
+}
+
+.Button:active {
+  transform: scale(1);
+}
+
+.RestartGame {
+  position: absolute;
+  top: 25%;
+  transform: translateY(-50%);
 }
 
 .ModesContainer {
@@ -29,15 +101,6 @@
   width: 70%;
 }
 
-.Check,
-.Icon {
-  font-weight: bold;
-  color: var(--button-bg-accept);
-  border: 1px solid var(--button-bg-accept);
-}
-
-.Check,
-.Icon,
 .Disabled {
   position: absolute;
   top: 50%;
@@ -48,9 +111,22 @@
 }
 
 .ButtonContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
-  width: 7vh;
-  height: 7vh;
+  padding: 10px 20px;
+  border-radius: 10px;
+  user-select: none;
+  cursor: pointer;
+  margin-top: 30px;
+}
+
+.CkeckButton {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .Disabled {
@@ -59,7 +135,6 @@
   animation: spinIn 1s linear 0s forwards;
 }
 
-.CheckContainer,
 .Restart {
   display: flex;
   flex: 1;
@@ -67,15 +142,6 @@
   align-items: center;
   cursor: pointer;
   padding-right: 15px;
-}
-
-.CheckHide {
-  display: none;
-}
-
-.CheckVisible,
-.Icon {
-  animation: spinIn 1s linear 0s forwards;
 }
 
 .PickText {
@@ -91,7 +157,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 1s ease-in-out;
+  /* transition: all 1s ease-in-out; */
   cursor: pointer;
 }
 
@@ -101,24 +167,17 @@
 }
 
 .PickContent {
-  position: absolute;
-  top: 0;
-  left: 5px;
-  width: calc(100% - 5px);
-  height: 100%;
-  transform: translateX(-150%);
-  transition: all 1s ease-in-out;
+  box-sizing: border-box;
   display: flex;
-  flex: 1;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-items: center;
-  opacity: 0;
-  user-select: none;
-}
-
-.PickVisible {
-  transform: translateX(0);
+  width: 100%;
+  height: 100%;
+  transition: all 1.5s cubic-bezier(0.39, -0.66, 0.35, 0.91);
   opacity: 1;
+  /* background-color: rgba(102, 205, 171, 0.329); */
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .PickHide {
@@ -159,14 +218,12 @@
 .LeftToRight,
 .RightToLeft {
   position: relative;
-  animation: dashIn 1s cubic-bezier(0.2, 0.76, 0.58, 1.12) 0s forwards;
+  animation: dashIn 1s cubic-bezier(0.2, 0.76, 0.58, 1.12) 1s forwards;
   opacity: 0;
 }
 
 .CardsContainer {
   position: relative;
-  top: 0;
-  left: 0;
   min-width: 200px;
   min-height: 300px;
   display: flex;
@@ -217,17 +274,23 @@
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: lightgray;
-  opacity: 0.4;
+  background-color: rgba(151, 151, 151, 0.719);
   font-size: 50px;
   font-weight: bold;
+  user-select: none;
 }
 
-.DefaultMsg {
+.SelectMode {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
-  font-size: 40px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -289,13 +352,32 @@
     flex-direction: column;
   }
 
+  .TitleContainer {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1vh;
+    width: 100%;
+    height: auto;
+  }
+
+  .Title {
+    justify-content: center;
+  }
+
+  .RestartContainer {
+    height: 100%;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 3vh;
+    padding-right: 0;
+  }
+
   .PickText {
     width: 100%;
     margin-top: 5.5vh;
     margin-left: 0;
   }
 
-  .CheckContainer,
   .Restart {
     padding: 0;
   }
@@ -308,7 +390,6 @@
   }
 
   .PickContent {
-    align-items: baseline;
     padding-top: 20px;
   }
 

@@ -37,3 +37,9 @@ body {
   height: 100%;
   background-color: var(--body-bg);
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

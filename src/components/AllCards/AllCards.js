@@ -25,11 +25,11 @@ export const defaultCards = [
     },
     {
         id: 7,
-        name: "football ball"
+        name: "ball"
     },
     {
         id: 8,
-        name: "football ball"
+        name: "ball"
     },
     {
         id: 9,
